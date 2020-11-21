@@ -8,7 +8,7 @@
         <form @submit.prevent>
           <input v-model.trim="email" type="email" placeholder="you@email.com" />
         </form>
-        <p v-if="errorMsg !== ''" class="error">{{ errorMessage }}</p>
+        <p v-if="errorMessage !== ''" class="error">{{ errorMessage }}</p>
         <button @click="resetPassword()" class="button">Reset</button>
       </div>
       <p v-else>Success! Check your email for a reset link.</p>

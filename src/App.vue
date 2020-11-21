@@ -1,33 +1,23 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Dashboard</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/settings">Settings</router-link> 
-    </div>
+    <SiteNav v-if='showNav'></SiteNav>
     <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import SiteNav from './components/SiteNav'
+import { mapState } from 'vuex'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  components: {
+    SiteNav
+  },
+  computed: {
+    ...mapState(['userProfile']),
+    showNav() {
+      return Object.keys(this.userProfile).length > 1
     }
   }
 }
-</style>
+</script>
